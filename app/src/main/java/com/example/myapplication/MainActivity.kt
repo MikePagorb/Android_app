@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         text =findViewById(R.id.textView)
+        //Виклик функції
         GetSong("I'm waking up to ash and dust")
 
     }
@@ -40,10 +41,12 @@ class MainActivity : AppCompatActivity() {
 
                     val song_response = response.body()!!
 
-                    val stringBuilder = " 1: "+
-                            song_response.status!! +
-                            " "+song_response.result!![0].lyrics
+                    val stringBuilder =
+                           song_response.result!![0].artist + " "+
+                                   song_response.result!![0].title
                     //data = stringBuilder
+
+                    //**Присвоєння значення поля відбувається безпосередньо у функціі
                     text!!.text= stringBuilder
 
 
