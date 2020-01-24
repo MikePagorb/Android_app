@@ -3,4 +3,8 @@
     <string name="Introduction">Please, write a line from the song:</string>
     <string name="done">Done</string>
     <string name="name">Line from the song</string>
+    <string name="your_song_is">Your song is:</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="error_song">This is not my song</string>
 </resources>
