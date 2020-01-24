@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    fun DoneSecondPage (view: View){
-        if(editText.text.toString() !=""||editText.text.toString() != null){
+    fun DoneSecondPage (view: View){//функція для кнопки Done щоб перейти на некст сторінку
+        if(editText.text.toString() !=""||editText.text.toString() != null){// перевірка на введення рядка пісні
         val doneButton = Intent(this,SecondActivity::class.java)
         val nameOfSong = editText.text.toString()
         doneButton.putExtra(SecondActivity.TOTAL_STRING, nameOfSong)
