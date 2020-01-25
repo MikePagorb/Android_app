@@ -3,6 +3,7 @@ package com.example.acinator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,9 +16,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
     var BaseUrl = "https://api.audd.io/"
     var API_TOKEN = "35961dda32ab78e0a043d0c6ba6b0976"
+    var nameOfSong : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var nameOfSong = findViewById<TextView>(R.id.nameOfSong)
+
     }
     fun textError (){//видає повідомлення про невведений рядок з пісні
         val error = Toast.makeText(this,"Enter line", Toast.LENGTH_SHORT)
@@ -26,18 +30,20 @@ class MainActivity : AppCompatActivity() {
     fun DoneSecondPage (view: View){//функція для кнопки Done щоб перейти на некст сторінку
         if(editText.text.toString() !=""){// перевірка на введення рядка пісні
         val doneButton = Intent(this,SecondActivity::class.java)
-        val nameOfSong = GetSong(editText.text.toString())
-        doneButton.putExtra(SecondActivity.EXTRA_MESSAGE, nameOfSong)
+        
+
         startActivity(doneButton)
         }else textError()
     }
     fun nameOfSong(view: View){
         if(editText.text.toString() !=""){
-            nameOfSongre.text = GetSong(editText.text.toString())
+
+
+            GetSong(editText.text.toString())
         }else textError()
     }
 
-    fun GetSong(req : String):String{
+    fun GetSong(req : String){
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -65,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onFailure(call: Call<Result>, t: Throwable) {result = "Have a trouble!!!"}
         })
-        return result
+        nameOfSong!!.text = result
     }
 
 }
