@@ -26,4 +26,38 @@ class MainActivity : AppCompatActivity() {
         }else textError()
     }
 
+    fun GetSong(req : String):String{
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BaseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(Song_Service::class.java)
+        val call = service.getSong(req,API_TOKEN)
+        var result: String=" "
+
+        call.enqueue(object : Callback<Result>{
+            override fun onResponse(call: Call<Result>, response: Response<Result>) {
+                if(response.code()==200){
+
+                    val song_response = response.body()!!
+
+                    val stringBuilder =
+                        song_response.result!![0].artist + " "+
+                                song_response.result!![0].title
+                    //data = stringBuilder
+                    result = stringBuilder
+
+                    //**Присвоєння значення поля відбувається безпосередньо у функціі
+
+                }
+            }
+
+            override fun onFailure(call: Call<Result>, t: Throwable) {result = "Have a trouble!!!"}
+
+
+        })
+        return result
+    }
+
 }
