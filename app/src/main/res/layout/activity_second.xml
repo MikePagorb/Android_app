@@ -25,7 +25,7 @@
         android:id="@+id/nameSong"
         android:layout_width="316dp"
         android:layout_height="120dp"
-        android:text=""
+        android:text=" "
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

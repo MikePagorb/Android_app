@@ -1,13 +1,20 @@
 package com.example.acinator
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    var BaseUrl = "https://api.audd.io/"
+    var API_TOKEN = "35961dda32ab78e0a043d0c6ba6b0976"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     fun DoneSecondPage (view: View){//функція для кнопки Done щоб перейти на некст сторінку
         if(editText.text.toString() !=""){// перевірка на введення рядка пісні
         val doneButton = Intent(this,SecondActivity::class.java)
-        val nameOfSong = editText.text.toString()
+        val nameOfSong = GetSong(editText.text.toString())
         doneButton.putExtra(SecondActivity.TOTAL_STRING, nameOfSong)
         startActivity(doneButton)
         }else textError()
@@ -36,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val call = service.getSong(req,API_TOKEN)
         var result: String=" "
 
-        call.enqueue(object : Callback<Result>{
+        call.enqueue(object : Callback<Result> {
             override fun onResponse(call: Call<Result>, response: Response<Result>) {
                 if(response.code()==200){
 
