@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Acinator</string>
     <string name="Introduction">Please, write a line from the song:</string>
-    <string name="done">Done</string>
+    <string name="done">Listen song</string>
     <string name="name">Line from the song</string>
     <string name="your_song_is">Your song is:</string>
     <string name="play">Play</string>
