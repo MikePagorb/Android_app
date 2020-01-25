@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var nameOfSong = findViewById<TextView>(R.id.nameOfSong)
+        nameOfSong = findViewById<TextView>(R.id.nameOfSong)
 
     }
     fun textError (){//видає повідомлення про невведений рядок з пісні
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(doneButton)
         }else textError()
     }
-    fun nameOfSong(view: View){
+    fun name_Of_Song(view: View){
         if(editText.text.toString() !=""){
 
 
@@ -60,18 +60,18 @@ class MainActivity : AppCompatActivity() {
                     val song_response = response.body()!!
 
                     val stringBuilder =
-                        song_response.result!![0].artist + " "+
+                        song_response.result!![0].artist + "-"+
                                 song_response.result!![0].title
                     //data = stringBuilder
                     result = stringBuilder
-
+                    nameOfSong!!.text = result
                     //**Присвоєння значення поля відбувається безпосередньо у функціі
 
                 }
             }
             override fun onFailure(call: Call<Result>, t: Throwable) {result = "Have a trouble!!!"}
         })
-        nameOfSong!!.text = result
+
     }
 
 }

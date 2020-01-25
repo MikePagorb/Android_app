@@ -14,16 +14,16 @@
         android:layout_width="322dp"
         android:layout_height="98dp"
         android:layout_marginBottom="204dp"
-        android:onClick="nameOfSong"
+        android:onClick="name_Of_Song"
         android:text="Name of song"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameOfSong"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.483" />
 
     <TextView
         android:id="@+id/textView"
@@ -45,16 +45,17 @@
         android:id="@+id/button"
         android:layout_width="322dp"
         android:layout_height="98dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="76dp"
         android:onClick="DoneSecondPage"
         android:text="@string/done"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameOfSong"
-        app:layout_constraintVertical_bias="0.79" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <EditText
         android:id="@+id/editText"
